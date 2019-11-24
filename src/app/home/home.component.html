@@ -1,0 +1,38 @@
+<div fxLayout="row" fxLayout.xs="column" class="mt-10">
+  <div fxFlex="5%"></div>
+
+  <div fxFlex="20%">
+    <mat-card-content>
+    <span><b>CATEGORIES</b></span>
+    <mat-list>
+      <mat-list-item>Business Card (5)</mat-list-item>
+      <mat-list-item>Ceramic Mugs (20)</mat-list-item>
+      <mat-list-item>Cock Print (4)</mat-list-item>
+      <mat-list-item>Digital Printing (5)</mat-list-item>
+      <mat-list-item>Glass Crstals (37)</mat-list-item>
+      <mat-list-item>MDF (8)</mat-list-item>
+      <mat-list-item>New (12)</mat-list-item>
+      <mat-list-item>Plates (7)</mat-list-item>
+    </mat-list>
+    </mat-card-content>
+  </div>
+
+  <div fxFlex="70%">
+    <div fxLayout="row wrap" class="mt-10">
+        <div fxFlex.lg="25%" *ngFor="let x of products">
+          <div class="item-card">
+            <mat-card-content>
+              <mat-card class="item-image">
+                <img src="assets/images/design/{{x}}.jpg" width="100%">
+              </mat-card>
+              <mat-card-footer>
+                <span class="title">TITLE</span><br/>
+                <span class="name">Name</span><br/>
+                <span class="price">Rs. 1500</span>
+              </mat-card-footer>
+            </mat-card-content>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
