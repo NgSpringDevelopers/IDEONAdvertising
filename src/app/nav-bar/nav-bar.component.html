@@ -16,10 +16,9 @@
         <input matInput placeholder="Search.." type="search">
       </mat-form-field>
       <mat-form-field class="form-space-margin">
-        <mat-select placeholder="Select Categories">
-          <mat-option value="1">1</mat-option>
-          <mat-option value="2">2</mat-option>
-          <mat-option value="3">3</mat-option>
+        <mat-select placeholder="Select Category">
+          <mat-option value="Any">Any</mat-option>
+          <mat-option *ngFor="let category of categories" [value]="category.code">{{category.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <button mat-stroked-button><mat-icon>search</mat-icon></button>
@@ -43,11 +42,11 @@
     </div>
   </div>
   <div fxLayout="row" fxLayout.xs="column" class="mt-10">
-    <mat-toolbar color="accent">
+    <mat-toolbar color="primary">
       <div fxFlex="70%"></div>
       <div fxFlex="10%">PRINTINGS</div>
       <div fxFlex="10%">DESIGNS</div>
-      <div fxFlex="10%">ABOUT</div>
+      <a (click)="gotoAbout()"><div fxFlex="10%">ABOUT</div></a>
     </mat-toolbar>
   </div>
 </mat-card-content>
