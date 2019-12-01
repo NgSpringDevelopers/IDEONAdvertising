@@ -10,7 +10,6 @@ import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {
   MatButtonModule,
-  MatCardMdImage,
   MatCardModule,
   MatFormFieldModule, MatIconModule,
   MatInputModule, MatListModule,
@@ -20,14 +19,19 @@ import {
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { AboutComponent } from './about/about.component';
 import {HttpClientModule} from '@angular/common/http';
-
+import { environment } from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireModule} from '@angular/fire';
+import { ProductsComponent } from './products/products.component';
+import {NgxSpinnerModule} from 'ngx-spinner';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
     NavBarComponent,
-    AboutComponent
+    AboutComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,10 @@ import {HttpClientModule} from '@angular/common/http';
     MatToolbarModule,
     MatSelectModule,
     MatIconModule,
-    MatListModule
+    NgxSpinnerModule,
+    MatListModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

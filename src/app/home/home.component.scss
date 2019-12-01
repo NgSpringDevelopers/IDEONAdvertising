@@ -1,29 +1,15 @@
-.item-card{
-  margin-bottom: 50px;
+body {
+  background-image: url("../../assets/images/5.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+h1,h3{
+  color: white;
+  text-align: center;
+}
+
+.client-card {
+  height: 140px;
   margin-right: 10px;
-  margin-left: 10px;
-}
-
-.item-image{
-  min-height: 230px;
-}
-
-.title{
-  font-size: 10px;
-  color: #cccccc;
-}
-
-.name{
-  text-align: center;
-  font-size: 15px;
-}
-
-.price{
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-mat-card-footer{
-  text-align: center;
 }

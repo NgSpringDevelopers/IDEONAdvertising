@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {EsResponse} from '../model/es-response';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {Category} from '../model/category';
 import {map} from 'rxjs/operators';
 
 @Injectable({
@@ -8,17 +8,20 @@ import {map} from 'rxjs/operators';
 })
 export class CategoryService {
 
-  categories = [];
-  constructor(public http: HttpClient) { }
-  baseUrl = 'http://localhost:8080/category/v1';
+  constructor(public fireStore: AngularFirestore) { }
   loadCategories() {
-    return this.http.get(this.baseUrl).pipe(map((res: EsResponse) => {
-      this.categories = res.body;
-      return res;
+    return this.fireStore.collection('categories').snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return {id, ...data};
+      });
     }));
   }
-  get _categories() {
-    return this.categories;
+  createCategory(category: Category) {
+    return new Promise<Category> ((resolve, reject) => {
+      this.fireStore.collection('categories').add(category).then(res => {}, err => reject(err));
+    });
   }
 
   delay(ms) {

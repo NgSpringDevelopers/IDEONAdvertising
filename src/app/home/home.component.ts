@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoryService} from '../services/category.service';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +7,9 @@ import {CategoryService} from '../services/category.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private categoryService: CategoryService) { }
-
-  products = [1, 2, 3, 4, 5, 6];
+  constructor() { }
+  clients = ['keels.png', 'oppo.png', 'tvs.png', 'hutch.jpg', 'samsung.png', 'elephant.png', 'mi.png', 'mac.png', 'burger.png'];
   async ngOnInit() {
-    this.categoryService.loadCategories().subscribe();
   }
 
 }

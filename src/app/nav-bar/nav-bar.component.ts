@@ -13,10 +13,8 @@ export class NavBarComponent implements OnInit {
   constructor(public router: Router, private categoryService: CategoryService) { }
   categories;
   async ngOnInit() {
-    this.categoryService.loadCategories().subscribe( (res: EsResponse) => {
-      if (res.status === 1) {
-        this.categories = res.body;
-      }
+    this.categoryService.loadCategories().subscribe(res => {
+      this.categories = res;
     });
   }
   gotoAbout() {

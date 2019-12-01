@@ -3,7 +3,7 @@
     <div fxFlex="5%">
     </div>
     <div fxFlex="20%">
-      <div class="logo-spacer"></div>
+<!--      <div class="logo-spacer"></div>-->
       <img src="assets/images/logo2.png" width="100%">
     </div>
     <div fxFlex="2%">
@@ -44,9 +44,9 @@
   <div fxLayout="row" fxLayout.xs="column" class="mt-10">
     <mat-toolbar color="primary">
       <div fxFlex="70%"></div>
-      <div fxFlex="10%">PRINTINGS</div>
-      <div fxFlex="10%">DESIGNS</div>
-      <a (click)="gotoAbout()"><div fxFlex="10%">ABOUT</div></a>
+      <a fxFlex="10%" routerLink="home" mat-list-item  routerLinkActive="active-list-item">Home</a>
+      <a fxFlex="10%" routerLink="products" mat-list-item  routerLinkActive="active-list-item">Products</a>
+      <a fxFlex="10%" routerLink="about" mat-list-item  routerLinkActive="active-list-item">Contacts</a>
     </mat-toolbar>
   </div>
 </mat-card-content>
