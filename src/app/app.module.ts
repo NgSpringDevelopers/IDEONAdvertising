@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatDialog, MatDialogModule,
   MatFormFieldModule, MatIconModule,
   MatInputModule, MatListModule,
   MatSelectModule,
@@ -24,6 +24,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireModule} from '@angular/fire';
 import { ProductsComponent } from './products/products.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
+import { AddCartComponent } from './products/add-cart/add-cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import {NgxSpinnerModule} from 'ngx-spinner';
     HomeComponent,
     NavBarComponent,
     AboutComponent,
-    ProductsComponent
+    ProductsComponent,
+    AddCartComponent
   ],
   imports: [
     BrowserModule,
@@ -49,10 +51,12 @@ import {NgxSpinnerModule} from 'ngx-spinner';
     MatIconModule,
     NgxSpinnerModule,
     MatListModule,
+    MatDialogModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddCartComponent]
 })
 export class AppModule { }
