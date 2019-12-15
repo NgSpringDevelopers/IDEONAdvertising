@@ -14,7 +14,9 @@ import {
   MatFormFieldModule, MatIconModule,
   MatInputModule, MatListModule,
   MatSelectModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatPaginatorModule,
+  MatTableModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { AboutComponent } from './about/about.component';
@@ -25,6 +27,8 @@ import {AngularFireModule} from '@angular/fire';
 import { ProductsComponent } from './products/products.component';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import { AddCartComponent } from './products/add-cart/add-cart.component';
+import { AddCategoryComponent } from './admin/add-category/add-category.component';
+import { AddProductComponent } from './admin/add-product/add-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +37,9 @@ import { AddCartComponent } from './products/add-cart/add-cart.component';
     NavBarComponent,
     AboutComponent,
     ProductsComponent,
-    AddCartComponent
+    AddCartComponent,
+    AddCategoryComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,14 @@ import { AddCartComponent } from './products/add-cart/add-cart.component';
     MatIconModule,
     NgxSpinnerModule,
     MatListModule,
+    MatPaginatorModule,
+    MatTableModule,
     MatDialogModule,
+    MatIconModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule
   ],
