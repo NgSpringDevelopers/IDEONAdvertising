@@ -29,6 +29,7 @@ import {NgxSpinnerModule} from 'ngx-spinner';
 import { AddCartComponent } from './products/add-cart/add-cart.component';
 import { AddCategoryComponent } from './admin/add-category/add-category.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
+import { MyCategoryComponent } from './admin/add-category/my-category/my-category.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
     ProductsComponent,
     AddCartComponent,
     AddCategoryComponent,
-    AddProductComponent
+    AddProductComponent,
+    MyCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,7 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
     MatIconModule,
     MatButtonModule,
     MatInputModule,
+    MatDialogModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -70,6 +73,6 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [AddCartComponent]
+  entryComponents: [AddCartComponent, MyCategoryComponent]
 })
 export class AppModule { }

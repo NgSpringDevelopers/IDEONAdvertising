@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Category} from '../model/category';
 import {map} from 'rxjs/operators';
+import { resolve } from 'path';
+import { reject } from 'q';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +24,9 @@ export class CategoryService {
     return new Promise<Category> ((resolve, reject) => {
       this.fireStore.collection('categories').add(category).then(res => {}, err => reject(err));
     });
+  }
+
+  editCategory(id, category: Category) {
   }
 
   delay(ms) {
