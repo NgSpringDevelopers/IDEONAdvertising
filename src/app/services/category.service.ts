@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Category} from '../model/category';
 import {map} from 'rxjs/operators';
-import { resolve } from 'path';
-import { reject } from 'q';
 
 @Injectable({
   providedIn: 'root'

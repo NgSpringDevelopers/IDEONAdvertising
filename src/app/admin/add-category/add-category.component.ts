@@ -9,8 +9,8 @@ import { MyCategoryComponent } from './my-category/my-category.component';
   styleUrls: ['./add-category.component.scss']
 })
 export class AddCategoryComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'code', 'name','action'];
-  dataSource = new MatTableDataSource<CategoryTable>();
+  displayedColumns: string[] = ['id', 'code', 'name', 'action'];
+  dataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
@@ -27,7 +27,7 @@ export class AddCategoryComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "30%";
+    dialogConfig.width = '30%';
     dialogConfig.data = row;
     this.dialog.open(MyCategoryComponent, dialogConfig);
   }
@@ -38,7 +38,7 @@ export class AddCategoryComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "30%";
+    dialogConfig.width = '30%';
     this.dialog.open(MyCategoryComponent, dialogConfig);
   }
 
