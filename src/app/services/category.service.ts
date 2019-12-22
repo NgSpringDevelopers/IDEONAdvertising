@@ -25,6 +25,10 @@ export class CategoryService {
   }
 
   editCategory(id, category: Category) {
+    this.fireStore.doc('categories/' + id).update(category);
+  }
+  deleteCategory(id) {
+    this.fireStore.doc('categories/' + id).delete();
   }
 
   delay(ms) {

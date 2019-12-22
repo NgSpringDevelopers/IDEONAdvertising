@@ -1,0 +1,74 @@
+<mat-card>
+  <mat-card-header>
+    <span>{{product? 'Edit Category': 'New Category' }}</span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form" class="normal-form" (submit)="onSave()">
+      <mat-grid-list cols="2" rowHeight="450px">
+        <mat-grid-tile>
+          <div class="controles-container">
+            <mat-form-field>
+              <input formControlName="code" matInput placeholder="Code">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input formControlName="name" matInput placeholder="Name">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select matNativeControl formControlName="categoryCode" placeholder="Category">
+                <mat-option *ngFor="let category of categories" [value]="category.code">{{category.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <textarea matInput formControlName="description" placeholder="Description"></textarea>
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select matNativeControl formControlName="unit" placeholder="Unit">
+                <mat-option value="pcs">Pcs</mat-option>
+                <mat-option value="inches">Inches</mat-option>
+                <mat-option value="point">Point</mat-option>
+                <mat-option value="kg">kg</mat-option>
+                <mat-option value="g">g</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input formControlName="quantity" matInput placeholder="Quantity">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input formControlName="price" matInput placeholder="Price">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="controles-container">
+            <mat-card style="width: 350px; height: 350px;">
+              <img [src]="image" width="100%" height="100%">
+              <div class="upload-btn-wrapper">
+                <button class="btn">Choose File</button>
+                <input type="file" accept=".jpg,.jpeg,.png" (change)="readImage($event)" style="display: inline-block;">
+              </div>
+            </mat-card>
+            <br/><br/>
+            <div class="button-row">
+              <button mat-raised-button color="primary" [disabled]="form.invalid">{{product? 'Edit': 'Save' }}</button>
+            </div>
+          </div>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+    </form>
+  </mat-card-content>
+</mat-card>
