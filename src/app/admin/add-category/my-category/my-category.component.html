@@ -1,6 +1,6 @@
 <mat-card>
 <mat-card-header>
-    <span>New Category</span>
+    <span>{{category? 'Edit Category': 'New Category' }}</span>
     <span class="fill-remaining-space"></span>
     <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
 </mat-card-header>
@@ -14,7 +14,7 @@
         <input formControlName="name" matInput placeholder="Name">
         <mat-error>This field is mandatory.</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" [disabled]="form.invalid">Save</button>
+    <button mat-raised-button color="primary" [disabled]="form.invalid">{{category? 'Edit': 'Save' }}</button>
 </form>
 </mat-card-content>
 </mat-card>

@@ -11,7 +11,6 @@ export class AboutComponent implements OnInit {
 
   constructor(private utilService: UtilService) {}
   ngOnInit() {
-    this.utilService.spinnerLoading(1000);
   }
 
 }

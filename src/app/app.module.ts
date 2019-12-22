@@ -16,7 +16,7 @@ import {
   MatSelectModule,
   MatToolbarModule,
   MatPaginatorModule,
-  MatTableModule
+  MatTableModule, MatSnackBarModule, MatGridListModule, MatRadioModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { AboutComponent } from './about/about.component';
@@ -30,6 +30,8 @@ import { AddCartComponent } from './products/add-cart/add-cart.component';
 import { AddCategoryComponent } from './admin/add-category/add-category.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
 import { MyCategoryComponent } from './admin/add-category/my-category/my-category.component';
+import { ConfirmComponent } from './services/confirm/confirm.component';
+import { MyProductComponent } from './admin/add-product/my-product/my-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,9 @@ import { MyCategoryComponent } from './admin/add-category/my-category/my-categor
     AddCartComponent,
     AddCategoryComponent,
     AddProductComponent,
-    MyCategoryComponent
+    MyCategoryComponent,
+    ConfirmComponent,
+    MyProductComponent
   ],
   imports: [
     BrowserModule,
@@ -67,12 +71,15 @@ import { MyCategoryComponent } from './admin/add-category/my-category/my-categor
     MatInputModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatGridListModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [AddCartComponent, MyCategoryComponent]
+  entryComponents: [AddCartComponent, MyCategoryComponent, ConfirmComponent, MyProductComponent]
 })
 export class AppModule { }

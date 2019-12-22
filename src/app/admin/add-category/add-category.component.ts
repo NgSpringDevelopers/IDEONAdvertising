@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatDialog, MatDialogConfig } from '@angular/material';
 import { CategoryService } from 'src/app/services/category.service';
 import { MyCategoryComponent } from './my-category/my-category.component';
+import {DialogService} from '../../services/dialog.service';
+import {NotificationService} from '../../services/notification.service';
 
 @Component({
   selector: 'app-add-category',
@@ -15,7 +17,9 @@ export class AddCategoryComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(private categoryService: CategoryService,
-              private dialog: MatDialog
+              private dialog: MatDialog,
+              private dialogService: DialogService,
+              private notificationService: NotificationService,
     ) { }
 
   ngOnInit() {
@@ -32,7 +36,16 @@ export class AddCategoryComponent implements OnInit {
     this.dialog.open(MyCategoryComponent, dialogConfig);
   }
 
-  onDelete() {}
+  onDelete(id) {
+    this.dialogService.openConfirmDialog('Are you sure to delete ?')
+      .afterClosed().subscribe(res => {
+      if (res) {
+        this.categoryService.deleteCategory(id);
+        this.notificationService.warn('Successfully Deleted!');
+      }
+      this.ngOnInit();
+    });
+  }
 
   onAdd() {
     const dialogConfig = new MatDialogConfig();
