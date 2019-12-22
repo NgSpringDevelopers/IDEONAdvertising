@@ -5,7 +5,14 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-
+    apiKey: 'AIzaSyBck1OjM8xPaRaEGK4e_8Y7xtf8x6weqTc',
+    authDomain: 'ideonadvertising-f4ee2.firebaseapp.com',
+    databaseURL: 'https://ideonadvertising-f4ee2.firebaseio.com',
+    projectId: 'ideonadvertising-f4ee2',
+    storageBucket: 'ideonadvertising-f4ee2.appspot.com',
+    messagingSenderId: '487755040339',
+    appId: '1:487755040339:web:f5a542415ddc4342ebe8a6',
+    measurementId: 'G-FS1GP6W5YF'
   }
 };
 

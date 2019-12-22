@@ -11,8 +11,8 @@ import { CategoryService } from 'src/app/services/category.service';
 export class MyCategoryComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) private category,
-    private categoryService: CategoryService,
-    private dialogRef: MatDialogRef<MyCategoryComponent>) { }
+              private categoryService: CategoryService,
+              private dialogRef: MatDialogRef<MyCategoryComponent>) { }
   form: FormGroup;
   ngOnInit() {
     this.form = new FormGroup ({
@@ -20,7 +20,8 @@ export class MyCategoryComponent implements OnInit {
       name: new FormControl('', Validators.required)
     });
     if (this.category) {
-      this.form.setValue(this.category);
+      this.form.get('code').setValue(this.category.code);
+      this.form.get('name').setValue(this.category.name);
     }
   }
   onClose() {
