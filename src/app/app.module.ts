@@ -32,6 +32,9 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
 import { MyCategoryComponent } from './admin/add-category/my-category/my-category.component';
 import { ConfirmComponent } from './services/confirm/confirm.component';
 import { MyProductComponent } from './admin/add-product/my-product/my-product.component';
+import {IMAGEVIEWER_CONFIG, ImageViewerModule} from '@hallysonh/ngx-imageviewer';
+import {IMAGE_VIEWER_CONFIG_DEFAULT} from './model/ImageViewer';
+import { ViewImageComponent } from './shared/view-image/view-image.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +48,8 @@ import { MyProductComponent } from './admin/add-product/my-product/my-product.co
     AddProductComponent,
     MyCategoryComponent,
     ConfirmComponent,
-    MyProductComponent
+    MyProductComponent,
+    ViewImageComponent
   ],
   imports: [
     BrowserModule,
@@ -76,10 +80,16 @@ import { MyProductComponent } from './admin/add-product/my-product/my-product.co
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     MatGridListModule,
-    MatRadioModule
+    MatRadioModule,
+    ImageViewerModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: IMAGEVIEWER_CONFIG,
+      useValue: IMAGE_VIEWER_CONFIG_DEFAULT
+    }
+  ],
   bootstrap: [AppComponent],
-  entryComponents: [AddCartComponent, MyCategoryComponent, ConfirmComponent, MyProductComponent]
+  entryComponents: [AddCartComponent, MyCategoryComponent, ConfirmComponent, MyProductComponent, ViewImageComponent]
 })
 export class AppModule { }

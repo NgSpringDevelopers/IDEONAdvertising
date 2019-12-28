@@ -4,11 +4,20 @@ import {MatDialog, MatDialogConfig} from '@angular/material';
 import {AddCartComponent} from './add-cart/add-cart.component';
 import {ProductService} from '../services/product.service';
 import {Product} from '../model/product';
+import {ViewImageComponent} from '../shared/view-image/view-image.component';
+import {transition, trigger, useAnimation} from '@angular/animations';
+import {slideFadeOut, useSlideFadeInAnimation} from '../model/animations/animations';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
+  animations: [
+    trigger('simple', [
+      transition(':enter', useSlideFadeInAnimation('1s', '20px')),
+      transition(':leave', useAnimation(slideFadeOut, {params: {time: '1s', endPos: '100px'}})),
+    ]),
+  ]
 })
 export class ProductsComponent implements OnInit {
 
@@ -19,6 +28,7 @@ export class ProductsComponent implements OnInit {
   products;
   selectedCategory = 'all';
   selectedProducts;
+  dialogRef: any;
   async ngOnInit() {
     this.categoryService.loadCategories().subscribe(res => {
       this.categories = res;
@@ -68,4 +78,11 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+  viewImage(image) {
+    this.dialogRef = this.dialog.open(ViewImageComponent, {
+      width: '850px',
+      height: '620px',
+      data: image
+    });
+  }
 }

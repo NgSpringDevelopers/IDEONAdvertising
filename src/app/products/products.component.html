@@ -1,7 +1,8 @@
 <div fxLayout="row" fxLayout.xs="column" class="mt-10">
-  <div fxFlex="5%"></div>
+  <div fxFlex="2%"></div>
 
-  <div fxFlex="15%">
+  <div fxFlex="18%">
+    <mat-card class="cat-card">
     <mat-card-content>
       <span><b>CATEGORIES</b></span>
       <mat-list *ngIf = "categories">
@@ -18,19 +19,21 @@
         </mat-list-item>
       </mat-list>
     </mat-card-content>
+    </mat-card>
   </div>
-
+  <div fxFlex="2%"></div>
   <div fxFlex="75%">
     <div fxLayout="row wrap" class="mt-10">
-      <div fxFlex.lg="25%" *ngFor="let product of selectedProducts">
+      <div fxFlex.lg="25%" *ngFor="let product of selectedProducts" [@simple]>
         <div class="item-card">
             <mat-card class="item-image">
-              <img [src]=product.image width="100%" height="100%">
+              <img [src]=product.image width="100%" height="100%" (click)="viewImage(product.image)" style="cursor: pointer">
             </mat-card>
             <mat-card-footer>
+              <br/>
               <span class="name">{{product.name}}</span><br/>
               <span class="price">Rs. {{product.price}}</span><br/>
-              <span>( {{product.quantity}} {{product.unit}} )</span><br/>
+              <span class="qty">( {{product.quantity}} {{product.unit}} )</span><br/>
               <span><button mat-raised-button (click)="addCart(product)">Add to Cart</button></span>
             </mat-card-footer>
         </div>
