@@ -16,7 +16,7 @@ import {
   MatSelectModule,
   MatToolbarModule,
   MatPaginatorModule,
-  MatTableModule, MatSnackBarModule, MatGridListModule, MatRadioModule
+  MatTableModule, MatSnackBarModule, MatGridListModule, MatRadioModule, MatBadgeModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { AboutComponent } from './about/about.component';
@@ -81,7 +81,8 @@ import { ViewImageComponent } from './shared/view-image/view-image.component';
     AngularFirestoreModule,
     MatGridListModule,
     MatRadioModule,
-    ImageViewerModule
+    ImageViewerModule,
+    MatBadgeModule
   ],
   providers: [
     {

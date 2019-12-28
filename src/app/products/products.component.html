@@ -3,8 +3,7 @@
 
   <div fxFlex="18%">
     <mat-card class="cat-card">
-    <mat-card-content>
-      <span><b>CATEGORIES</b></span>
+      <span style="color: #1B1E41"><b>CATEGORIES</b></span>
       <mat-list *ngIf = "categories">
         <mat-list-item>
           <a class="pointer" (click)="selectCategory(null)" [ngClass]="{
@@ -18,7 +17,6 @@
           </a>
         </mat-list-item>
       </mat-list>
-    </mat-card-content>
     </mat-card>
   </div>
   <div fxFlex="2%"></div>
