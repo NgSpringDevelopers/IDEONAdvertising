@@ -37,6 +37,7 @@ div.container{
   position: relative;
   overflow: hidden;
   display: inline-block;
+  cursor: pointer;
 }
 
 .btn {
@@ -47,6 +48,7 @@ div.container{
   border-radius: 5px;
   font-size: 15px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .upload-btn-wrapper input[type=file] {
