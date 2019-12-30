@@ -43,12 +43,20 @@
   </div>
   <div fxLayout="row" fxLayout.xs="column" class="mt-10">
     <mat-toolbar color="primary">
-      <div fxFlex="50%"></div>
+      <div fxFlex="45%"></div>
       <a fxFlex="10%" routerLink="home" mat-list-item  routerLinkActive="active-list-item">Home</a>
       <a fxFlex="10%" routerLink="products" mat-list-item  routerLinkActive="active-list-item">Products</a>
       <a fxFlex="10%" routerLink="about" mat-list-item  routerLinkActive="active-list-item">Contacts</a>
       <a fxFlex="10%" routerLink="add-category" mat-list-item  routerLinkActive="active-list-item">Add Category</a>
       <a fxFlex="10%" routerLink="add-product" mat-list-item  routerLinkActive="active-list-item">Add Products</a>
+      <a  class="dropdown" fxFlex="5%">
+        <mat-icon class="dropbtn" style="margin-top: 7px; cursor: pointer">person_pin</mat-icon>
+        <div class="dropdown-content">
+          <a href="#"><mat-icon style="margin-top: auto">explore</mat-icon>Login</a>
+          <a href="#"><mat-icon>explore</mat-icon> Settings</a>
+          <a href="#"><mat-icon>explore</mat-icon> Logout</a>
+        </div>
+      </a>
     </mat-toolbar>
   </div>
 </mat-card-content>
