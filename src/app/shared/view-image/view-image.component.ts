@@ -12,13 +12,9 @@ export class ViewImageComponent implements OnInit {
               private dialogRef: MatDialogRef<ViewImageComponent>
   ) {
   }
-  images: FormDataEntryValue = 'assets/images/no-image.jpg';
+  images = 'assets/images/no-image.jpg';
   ngOnInit() {
-    if (this.selectedImage.length > 100) {
-      const blob = this.dataURItoBlob(this.selectedImage);
-      const file = new File([blob], 'preview.jpg', { type: 'image/jpg' });
-      this.images = file;
-    } else {
+    if (this.selectedImage) {
       this.images = this.selectedImage;
     }
   }
@@ -28,16 +24,4 @@ export class ViewImageComponent implements OnInit {
   onClose() {
     this.dialogRef.close();
   }
-
-  dataURItoBlob(dataURI) {
-    const byteString = window.atob(dataURI.substring(dataURI.indexOf('base64') + 7));
-    const arrayBuffer = new ArrayBuffer(byteString.length);
-    const int8Array = new Uint8Array(arrayBuffer);
-    for (let i = 0; i < byteString.length; i++) {
-      int8Array[i] = byteString.charCodeAt(i);
-    }
-    const blob = new Blob([int8Array], {type: 'image/jpeg'});
-    return blob;
-  }
-
 }

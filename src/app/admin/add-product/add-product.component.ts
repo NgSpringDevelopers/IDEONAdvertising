@@ -5,6 +5,8 @@ import {MyCategoryComponent} from '../add-category/my-category/my-category.compo
 import {MyProductComponent} from './my-product/my-product.component';
 import {DialogService} from '../../services/dialog.service';
 import {NotificationService} from '../../services/notification.service';
+import {ProgressDialogComponent} from '../../shared/progress-dialog/progress-dialog.component';
+import * as util from '../../model/util';
 
 @Component({
   selector: 'app-add-product',
@@ -24,8 +26,12 @@ export class AddProductComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-    this.productService.loadProducts().subscribe(data => {
-      this.dataSource.data = data;
+    const dialogRef = this.dialog.open(ProgressDialogComponent, util.getProgressDialogData());
+    dialogRef.afterOpened().subscribe(() => {
+      this.productService.loadProducts().subscribe(data => {
+        this.dataSource.data = data;
+        dialogRef.close();
+      });
     });
   }
 

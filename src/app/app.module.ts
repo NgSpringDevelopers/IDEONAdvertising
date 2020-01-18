@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {
   MatButtonModule,
-  MatCardModule, MatDialog, MatDialogModule,
+  MatCardModule, MatDialogModule,
   MatFormFieldModule, MatIconModule,
   MatInputModule, MatListModule,
   MatSelectModule,
@@ -32,9 +32,9 @@ import { AddProductComponent } from './admin/add-product/add-product.component';
 import { MyCategoryComponent } from './admin/add-category/my-category/my-category.component';
 import { ConfirmComponent } from './services/confirm/confirm.component';
 import { MyProductComponent } from './admin/add-product/my-product/my-product.component';
-import {IMAGEVIEWER_CONFIG, ImageViewerModule} from '@hallysonh/ngx-imageviewer';
-import {IMAGE_VIEWER_CONFIG_DEFAULT} from './model/ImageViewer';
 import { ViewImageComponent } from './shared/view-image/view-image.component';
+import {NgImageViewerModule} from '@haseeamarathunga/ng-image-viewer';
+import { ProgressDialogComponent } from './shared/progress-dialog/progress-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +49,8 @@ import { ViewImageComponent } from './shared/view-image/view-image.component';
     MyCategoryComponent,
     ConfirmComponent,
     MyProductComponent,
-    ViewImageComponent
+    ViewImageComponent,
+    ProgressDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -81,16 +82,11 @@ import { ViewImageComponent } from './shared/view-image/view-image.component';
     AngularFirestoreModule,
     MatGridListModule,
     MatRadioModule,
-    ImageViewerModule,
-    MatBadgeModule
-  ],
-  providers: [
-    {
-      provide: IMAGEVIEWER_CONFIG,
-      useValue: IMAGE_VIEWER_CONFIG_DEFAULT
-    }
+    MatBadgeModule,
+    NgImageViewerModule
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AddCartComponent, MyCategoryComponent, ConfirmComponent, MyProductComponent, ViewImageComponent]
+  entryComponents: [AddCartComponent, MyCategoryComponent, ConfirmComponent, MyProductComponent, ViewImageComponent,
+    ProgressDialogComponent]
 })
 export class AppModule { }
