@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {CategoryService} from '../services/category.service';
 import {EsResponse} from '../model/es-response';
+import {CartService} from '../services/cart.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,7 +11,7 @@ import {EsResponse} from '../model/es-response';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(public router: Router, private categoryService: CategoryService) { }
+  constructor(public router: Router, public cartService: CartService, private categoryService: CategoryService) { }
   categories;
   async ngOnInit() {
     this.categoryService.loadCategories().subscribe(res => {

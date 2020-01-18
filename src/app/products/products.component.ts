@@ -44,11 +44,11 @@ export class ProductsComponent implements OnInit {
     });
   }
   addCart(row) {
-    console.log(row);
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
+    dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '60%';
+    dialogConfig.width = '15%';
+    dialogConfig.data = row;
     this.dialog.open(AddCartComponent, dialogConfig).afterClosed().subscribe(result => {
       console.log('Closed');
     });
