@@ -1,4 +1,6 @@
 @import 'my-theme';
+@import "~font-awesome/css/font-awesome.css";
+
 html, body {
   height: 100%;
 }
@@ -609,4 +611,9 @@ a {
   -webkit-border-radius: 10px;
   border-radius: 10px;
   margin-left: 2px;
+}
+
+.loading .mat-dialog-container {
+  background: rgba(0, 0, 0, 0.0) !important;
+  box-shadow: none !important;
 }

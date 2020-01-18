@@ -4,6 +4,8 @@ import { CategoryService } from 'src/app/services/category.service';
 import { MyCategoryComponent } from './my-category/my-category.component';
 import {DialogService} from '../../services/dialog.service';
 import {NotificationService} from '../../services/notification.service';
+import {ProgressDialogComponent} from '../../shared/progress-dialog/progress-dialog.component';
+import * as util from '../../model/util';
 
 @Component({
   selector: 'app-add-category',
@@ -23,8 +25,12 @@ export class AddCategoryComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.categoryService.loadCategories().subscribe(data => {
-      this.dataSource.data = data;
+    const dialogRef = this.dialog.open(ProgressDialogComponent, util.getProgressDialogData());
+    dialogRef.afterOpened().subscribe(() => {
+      this.categoryService.loadCategories().subscribe(data => {
+        this.dataSource.data = data;
+        dialogRef.close();
+      });
     });
   }
   onEdit(row) {

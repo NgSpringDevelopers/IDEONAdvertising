@@ -23,10 +23,11 @@
     "@angular/platform-browser": "~8.2.3",
     "@angular/platform-browser-dynamic": "~8.2.3",
     "@angular/router": "~8.2.3",
-    "@hallysonh/ngx-imageviewer": "^2.0.4",
-    "ngx-spinner": "^8.0.3",
+    "@haseeamarathunga/ng-image-viewer": "0.0.6",
+    "font-awesome": "^4.7.0",
     "firebase": "^7.5.0",
     "hammerjs": "^2.0.8",
+    "ngx-spinner": "^8.0.3",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

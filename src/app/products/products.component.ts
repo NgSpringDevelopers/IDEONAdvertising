@@ -3,10 +3,11 @@ import {CategoryService} from '../services/category.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {AddCartComponent} from './add-cart/add-cart.component';
 import {ProductService} from '../services/product.service';
-import {Product} from '../model/product';
+import * as util from '../model/util';
 import {ViewImageComponent} from '../shared/view-image/view-image.component';
 import {transition, trigger, useAnimation} from '@angular/animations';
 import {slideFadeOut, useSlideFadeInAnimation} from '../model/animations/animations';
+import {ProgressDialogComponent} from '../shared/progress-dialog/progress-dialog.component';
 
 @Component({
   selector: 'app-products',
@@ -30,12 +31,16 @@ export class ProductsComponent implements OnInit {
   selectedProducts;
   dialogRef: any;
   async ngOnInit() {
-    this.categoryService.loadCategories().subscribe(res => {
-      this.categories = res;
-    });
-    this.productService.loadProducts().subscribe(res => {
-      this.products = res;
-      this.selectedProducts = this.products;
+    const dialogRef = this.dialog.open(ProgressDialogComponent, util.getProgressDialogData());
+    dialogRef.afterOpened().subscribe(() => {
+      this.categoryService.loadCategories().subscribe(res => {
+        this.categories = res;
+      });
+      this.productService.loadProducts().subscribe(res => {
+        this.products = res;
+        this.selectedProducts = this.products;
+        dialogRef.close();
+      });
     });
   }
   addCart(row) {
