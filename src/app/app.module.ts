@@ -35,6 +35,7 @@ import { MyProductComponent } from './admin/add-product/my-product/my-product.co
 import { ViewImageComponent } from './shared/view-image/view-image.component';
 import {NgImageViewerModule} from '@haseeamarathunga/ng-image-viewer';
 import { ProgressDialogComponent } from './shared/progress-dialog/progress-dialog.component';
+import { ShoppingCartComponent } from './shared/shopping-cart/shopping-cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,8 @@ import { ProgressDialogComponent } from './shared/progress-dialog/progress-dialo
     ConfirmComponent,
     MyProductComponent,
     ViewImageComponent,
-    ProgressDialogComponent
+    ProgressDialogComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +89,6 @@ import { ProgressDialogComponent } from './shared/progress-dialog/progress-dialo
   ],
   bootstrap: [AppComponent],
   entryComponents: [AddCartComponent, MyCategoryComponent, ConfirmComponent, MyProductComponent, ViewImageComponent,
-    ProgressDialogComponent]
+    ProgressDialogComponent, ShoppingCartComponent]
 })
 export class AppModule { }
