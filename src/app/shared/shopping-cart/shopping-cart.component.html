@@ -1,0 +1,45 @@
+<h3>Shopping Cart </h3>
+
+<mat-list *ngIf="cartDetails.length > 0">
+  <mat-card *ngFor="let item of cartDetails" class="item-cart">
+    <div fxLayout="row">
+      <div fxFlex="20%">
+        <div style="height: 70px; width: 70px">
+          <img [src]="item.product.image" height="70" width="70">
+        </div>
+      </div>
+      <div fxFlex="35%">
+        <h4 style="color: #1B1E41">{{item.product.name}} ({{item.quantity}} {{item.product.unit}})
+
+        </h4>
+      </div>
+      <div fxFlex="35%">
+        <h4>
+          | &nbsp; &nbsp; &nbsp; Rs. {{item.product.price}} x {{item.quantity}} = {{item.product.price*item.quantity}}
+        </h4>
+      </div>
+      <div fxFlex="10%">
+        <h4>
+         <mat-icon style="cursor: pointer" (click)="deleteItem(item)" color="warn">delete</mat-icon>
+        </h4>
+      </div>
+    </div>
+  </mat-card>
+  <div fxLayout="row" *ngIf="cartDetails.length>0">
+    <div fxFlex="70%"></div>
+    <div fxFlex="30%">
+      <h4>Total Amount : <span style="color: #1B1E41;font-weight: bold">Rs. {{totalAmt}}</span></h4>
+    </div>
+  </div>
+  <div fxLayout="row" *ngIf="cartDetails.length>0">
+    <div fxFlex="80%"></div>
+    <div fxFlex="20%">
+      <button mat-raised-button color="accent">Place Order</button>
+    </div>
+  </div>
+</mat-list>
+
+<div *ngIf="cartDetails.length == 0">
+  <p>Shopping cart Empty</p>
+  <img src="assets/images/empty-shopping.png" width="100%">
+</div>

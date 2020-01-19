@@ -38,7 +38,7 @@
 
     <div fxFlex="10%" style="cursor: pointer">
       <div class="spacer"></div>
-        <mat-icon matBadge="0" matBadgePosition="after" matBadgeColor="warn">shopping_cart</mat-icon>
+        <mat-icon (click)="shoppingCart()" [matBadge]="cartService.cart.length" matBadgePosition="after" matBadgeColor="warn">shopping_cart</mat-icon>
     </div>
   </div>
   <div fxLayout="row" fxLayout.xs="column" class="mt-10">
@@ -52,9 +52,9 @@
       <a  class="dropdown" fxFlex="5%">
         <mat-icon class="dropbtn" style="margin-top: 7px; cursor: pointer">person_pin</mat-icon>
         <div class="dropdown-content">
-          <a href="#"><mat-icon style="margin-top: auto">explore</mat-icon>Login</a>
-          <a href="#"><mat-icon>explore</mat-icon> Settings</a>
-          <a href="#"><mat-icon>explore</mat-icon> Logout</a>
+          <a><mat-icon class="icon-drop">explore</mat-icon> Login</a>
+          <a><mat-icon class="icon-drop">settings</mat-icon> Settings</a>
+          <a><mat-icon class="icon-drop">explore</mat-icon> Logout</a>
         </div>
       </a>
     </mat-toolbar>
