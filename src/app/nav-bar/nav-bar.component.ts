@@ -5,6 +5,8 @@ import {EsResponse} from '../model/es-response';
 import {CartService} from '../services/cart.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {ShoppingCartComponent} from '../shared/shopping-cart/shopping-cart.component';
+import {LoginService} from '../services/login.service';
+import {LoginComponent} from '../shared/login/login.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -33,4 +35,10 @@ export class NavBarComponent implements OnInit {
     const dialogRef = this.dialog.open(ShoppingCartComponent, config);
   }
 
+  userLogin() {
+    const config = new MatDialogConfig();
+    config.width = '50%';
+    config.height = '550px';
+    const dialogRef = this.dialog.open(LoginComponent, config);
+  }
 }

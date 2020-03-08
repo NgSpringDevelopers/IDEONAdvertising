@@ -15,9 +15,9 @@ import * as util from '../../model/util';
 })
 export class AddProductComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'code', 'name', 'categoryCode', 'description', 'unit', 'quantity', 'price', 'action'];
+  displayedColumns: string[] = ['code', 'name', 'categoryCode', 'description', 'unit', 'quantity', 'price', 'action'];
   dataSource = new MatTableDataSource<any>();
-
+  searchKey: string;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   constructor(public productService: ProductService,
               private dialog: MatDialog,
@@ -60,5 +60,14 @@ export class AddProductComponent implements OnInit {
       }
       this.ngOnInit();
     });
+  }
+
+  onSearchClear() {
+    this.searchKey = '';
+    this.applyFilter();
+  }
+
+  applyFilter() {
+    this.dataSource.filter = this.searchKey.trim().toLowerCase();
   }
 }
