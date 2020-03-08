@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {
@@ -36,6 +35,8 @@ import { ViewImageComponent } from './shared/view-image/view-image.component';
 import {NgImageViewerModule} from '@haseeamarathunga/ng-image-viewer';
 import { ProgressDialogComponent } from './shared/progress-dialog/progress-dialog.component';
 import { ShoppingCartComponent } from './shared/shopping-cart/shopping-cart.component';
+import {LoginComponent} from './shared/login/login.component';
+import {AngularFireAuthModule} from '@angular/fire/auth';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,6 +83,7 @@ import { ShoppingCartComponent } from './shared/shopping-cart/shopping-cart.comp
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     MatGridListModule,
     MatRadioModule,
     MatBadgeModule,
@@ -90,6 +92,6 @@ import { ShoppingCartComponent } from './shared/shopping-cart/shopping-cart.comp
   ],
   bootstrap: [AppComponent],
   entryComponents: [AddCartComponent, MyCategoryComponent, ConfirmComponent, MyProductComponent, ViewImageComponent,
-    ProgressDialogComponent, ShoppingCartComponent]
+    ProgressDialogComponent, ShoppingCartComponent, LoginComponent]
 })
 export class AppModule { }
