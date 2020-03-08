@@ -15,7 +15,7 @@ import * as util from '../../model/util';
 export class AddCategoryComponent implements OnInit {
   displayedColumns: string[] = ['id', 'code', 'name', 'action'];
   dataSource = new MatTableDataSource<any>();
-
+  searchKey: string;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(private categoryService: CategoryService,
@@ -59,6 +59,15 @@ export class AddCategoryComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '30%';
     this.dialog.open(MyCategoryComponent, dialogConfig);
+  }
+
+  onSearchClear() {
+    this.searchKey = '';
+    this.applyFilter();
+  }
+
+  applyFilter() {
+    this.dataSource.filter = this.searchKey.trim().toLowerCase();
   }
 
 }

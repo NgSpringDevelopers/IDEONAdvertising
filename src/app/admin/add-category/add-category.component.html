@@ -1,7 +1,15 @@
 <div fxLayout="row" fxLayout.xs="column" class="mt-10">
     <div fxFlex="5%"></div>
     <div fxFlex="50%">
+      <div class="search-div">
         <button mat-raised-button color="primary" (click)="onAdd()"><mat-icon>add</mat-icon> Add</button>
+        <mat-form-field class="search-form-field" floatLabel="never">
+          <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+          <button mat-button matSuffix mat-icon-button aria-label="Clear"*ngIf="searchKey"  (click)="onSearchClear()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
         <div class="mb-5"></div>
         <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource">

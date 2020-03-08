@@ -5,6 +5,7 @@ import {EsResponse} from '../model/es-response';
 import {CartService} from '../services/cart.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {ShoppingCartComponent} from '../shared/shopping-cart/shopping-cart.component';
+import {LoginService} from '../services/login.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -16,12 +17,14 @@ export class NavBarComponent implements OnInit {
   constructor(public router: Router,
               public cartService: CartService,
               public dialog: MatDialog,
+              public loginService: LoginService,
               private categoryService: CategoryService) { }
   categories;
   async ngOnInit() {
     this.categoryService.loadCategories().subscribe(res => {
       this.categories = res;
     });
+    console.log(this.loginService.encrypt('1qaz@WSX'));
   }
   gotoAbout() {
     return this.router.navigateByUrl('about');
