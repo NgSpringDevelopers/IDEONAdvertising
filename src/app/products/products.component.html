@@ -6,14 +6,14 @@
       <span style="color: #1B1E41"><b>CATEGORIES</b></span>
       <mat-list *ngIf = "categories">
         <mat-list-item>
-          <a class="pointer" (click)="selectCategory(null)" [ngClass]="{
-                    'active-category' : selectedCategory === 'all'}">All
+          <a class="pointer" (click)="productService.selectCategory({code: 'All'}, '')" [ngClass]="{
+                    'active-category' : productService.selectedCategory === 'All'}">All
           </a>
         </mat-list-item>
         <mat-list-item *ngFor="let category of categories">
-          <a class="pointer" (click)="selectCategory(category)" [ngClass]="{
-                    'active-category' : category.code === selectedCategory}">
-            {{category.name}} ({{getLengthFromCatCode(category.code)}})
+          <a class="pointer" (click)="productService.selectCategory(category, '')" [ngClass]="{
+                    'active-category' : category.code === productService.selectedCategory}">
+            {{category.name}} ({{productService.getLengthFromCatCode(category.code)}})
           </a>
         </mat-list-item>
       </mat-list>
@@ -22,7 +22,7 @@
   <div fxFlex="2%"></div>
   <div fxFlex="75%">
     <div fxLayout="row wrap" class="mt-10">
-      <div fxFlex.lg="25%" *ngFor="let product of selectedProducts" [@simple]>
+      <div fxFlex.lg="25%" *ngFor="let product of productService.selectedProducts" [@simple]>
         <div class="item-card">
             <mat-card class="item-image">
               <img [src]=product.image width="100%" height="100%" (click)="viewImage(product.image)" style="cursor: pointer">

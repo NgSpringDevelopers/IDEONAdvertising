@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CategoryService} from '../services/category.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {AddCartComponent} from './add-cart/add-cart.component';
@@ -8,6 +8,7 @@ import {ViewImageComponent} from '../shared/view-image/view-image.component';
 import {transition, trigger, useAnimation} from '@angular/animations';
 import {slideFadeOut, useSlideFadeInAnimation} from '../model/animations/animations';
 import {ProgressDialogComponent} from '../shared/progress-dialog/progress-dialog.component';
+import {Category} from '../model/category';
 
 @Component({
   selector: 'app-products',
@@ -20,15 +21,12 @@ import {ProgressDialogComponent} from '../shared/progress-dialog/progress-dialog
     ]),
   ]
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
 
   constructor(private categoryService: CategoryService,
-              private productService: ProductService,
+              public productService: ProductService,
               private dialog: MatDialog) { }
   categories;
-  products;
-  selectedCategory = 'all';
-  selectedProducts;
   dialogRef: any;
   async ngOnInit() {
     const dialogRef = this.dialog.open(ProgressDialogComponent, util.getProgressDialogData());
@@ -37,9 +35,16 @@ export class ProductsComponent implements OnInit {
         this.categories = res;
       });
       this.productService.loadProducts().subscribe(res => {
-        this.products = res;
-        this.selectedProducts = this.products;
+        this.productService.products = res;
+        this.productService.selectedProducts = this.productService.products;
         dialogRef.close();
+        if (this.productService.selectedCategory) {
+          if (this.productService.selectedCategory !== 'All') {
+            const category = new Category();
+            category.code = this.productService.selectedCategory;
+            this.productService.selectCategory(category, this.productService.filterValue);
+          }
+        }
       });
     });
   }
@@ -53,35 +58,6 @@ export class ProductsComponent implements OnInit {
       console.log('Closed');
     });
   }
-  selectCategory(category) {
-    if (category) {
-      this.selectedCategory = category.code;
-      this.selectedProducts = this.filterProductsByCatCode(this.selectedCategory);
-    } else {
-      this.selectedCategory = 'all';
-      this.selectedProducts = this.products;
-    }
-  }
-  filterProductsByCatCode(catCode) {
-    const productArr = [];
-    this.products.forEach(product => {
-      if (product.categoryCode === catCode) {
-        productArr.push(product);
-      }
-    });
-    return productArr;
-  }
-  getLengthFromCatCode(code) {
-    if (this.products) {
-      let i = 0;
-      this.products.forEach(product => {
-        if (product.categoryCode === code) {
-          i++;
-        }
-      });
-      return i;
-    }
-  }
 
   viewImage(image) {
     this.dialogRef = this.dialog.open(ViewImageComponent, {
@@ -89,5 +65,10 @@ export class ProductsComponent implements OnInit {
       height: '620px',
       data: image
     });
+  }
+
+  ngOnDestroy() {
+    this.productService.selectedCategory = 'All';
+    this.productService.filterValue = '';
   }
 }
