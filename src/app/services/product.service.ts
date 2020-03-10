@@ -9,7 +9,10 @@ import {Product} from '../model/product';
 export class ProductService {
 
   constructor(public fireStore: AngularFirestore) { }
-
+  selectedCategory = 'All';
+  filterValue = '';
+  products;
+  selectedProducts;
   loadProducts() {
     return this.fireStore.collection('products').snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
@@ -34,5 +37,42 @@ export class ProductService {
 
   delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  selectCategory(category, filter) {
+    if (category.code !== 'All') {
+      this.selectedCategory = category.code;
+      this.selectedProducts = this.filterProductsByCatCode(this.selectedCategory, filter);
+    } else {
+      this.selectedCategory = 'All';
+      this.selectedProducts = this.products;
+    }
+  }
+  filterProductsByCatCode(catCode, filter) {
+    const productArr = [];
+    this.products.forEach(product => {
+      if (product.categoryCode === catCode) {
+        if (filter) {
+          if (filter.toLowerCase() === product.name.toLowerCase()) {
+            productArr.push(product);
+          }
+        } else {
+          productArr.push(product);
+        }
+      }
+    });
+    return productArr;
+  }
+
+  getLengthFromCatCode(code) {
+    if (this.products) {
+      let i = 0;
+      this.products.forEach(product => {
+        if (product.categoryCode === code) {
+          i++;
+        }
+      });
+      return i;
+    }
   }
 }
