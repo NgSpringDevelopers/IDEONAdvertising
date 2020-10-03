@@ -78,4 +78,7 @@ export class ShoppingCartComponent implements OnInit {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
+  placeOrder() {
+
+  }
 }

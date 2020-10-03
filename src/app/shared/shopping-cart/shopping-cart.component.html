@@ -34,7 +34,7 @@
   <div fxLayout="row" *ngIf="cartDetails.length>0">
     <div fxFlex="80%"></div>
     <div fxFlex="20%">
-      <button mat-raised-button color="accent">Place Order</button>
+      <button mat-raised-button color="accent" (click)="placeOrder()">Place Order</button>
     </div>
   </div>
 </mat-list>
